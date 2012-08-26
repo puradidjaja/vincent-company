@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     Options Indexes FollowSymlinks Multiviews
-    RewriteBase /vincent-company/
+    
 
     #When your application folder isn't in the system folder
     #This snippet prevents user access to the application folder

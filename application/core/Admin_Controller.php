@@ -6,18 +6,13 @@
  */
 
 /**
- * Description of Dashboard
+ * Description of Admin_Controller
  *
  * @author satriaprayoga
  */
-class Dashboard extends MY_Controller{
+class Admin_Controller extends MY_Controller{
     
     public function __construct() {
         parent::__construct();
     }
-    
-    public function index(){
-        echo 'admin dashboard';
-    }
-    
 }
