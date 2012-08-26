@@ -62,12 +62,12 @@ $assets = array(
             
 </script>
 <div class="span12">
-<h1 class="page-title">Dashboard </h1>
+    <h1 class="page-title">Dashboard </h1>
 <div class="row">
     <div class="span12">
     <div class="widget">
         <div class="widget-header">
-            <h3><i class="icon-bar-chart"></i> Stats</h3>
+            <h3><i class="icon-bar-chart icon-large"></i>&nbsp;&nbsp;Stats</h3>
         </div>
         <div class="widget-content">
             <div class="well">
@@ -102,7 +102,7 @@ $assets = array(
 <div class="span12">
     <div class="widget">
         <div class="widget-header">
-            <h3><i class="icon-info-sign"></i> Website Information</h3>
+            <h3><i class="icon-info-sign icon-large"></i>&nbsp;&nbsp;Website Information</h3>
             <input id="area-id" type="hidden" value="<?php echo $profile->id; ?>"/>
             
             <input id="xcord" type="hidden" value="<?php echo $x; ?>"/>
