@@ -14,6 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div span="12">
+                         
 
                         <div class="widget">
                             <div class="widget-header">
@@ -21,7 +22,7 @@
                             </div>
                             <div class="widget-content">
 
-                                <?php echo form_open_multipart('admin/upload_logo', '', 'id="image-form" class="form well"') ?>
+                                <?php echo form_open_multipart('admin/image/upload/'.$wysiwyg, '', 'id="image-form" class="form well"') ?>
                                 <?php
                                 if (!empty($error)):
                                     echo "<p>" . $error . "</p>";
@@ -34,10 +35,14 @@
                                         <input type="submit" name="html-upload" id="html-upload" class="btn" value="Upload"  />      
                                     </p>
                                     <div class="clear"></div>
+
+
+                                    <span class="max-upload-size">Maximum upload file size: 2MB.</span>
+                                    <span class="after-file-upload">After a file has been uploaded, you can add titles and descriptions.</span>
                                 </div>
                                 <?php echo form_close(); ?>
                                 <?php if (!empty($success_upload)): ?>
-                                    <?php $this->load->view('dashboard/logo_form_success') ?>
+                                    <?php $this->load->view('image/dialog/upload_success') ?>
                                 <?php endif; ?>
                             </div>
                         </div>  

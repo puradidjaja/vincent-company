@@ -6,35 +6,26 @@
  */
 
 /**
- * Description of profile_model
+ * Description of Image_model
  *
  * @author satriaprayoga
  */
-class Profile_model extends MY_Model {
+class Image_model extends MY_Model {
 
-    var $upload_path;
+    var $image_path;
+    var $thumb_path;
 
     public function __construct() {
         parent::__construct();
-        $this->table_name = 'profile';
-        $this->upload_path = realpath(BASEPATH . '../uploads');
+        $this->table_name = 'image';
+        $this->image_path = realpath(BASEPATH . '../uploads/images');
+        $this->thumb_path = realpath(BASEPATH . '../uploads/thumbs');
     }
 
-    public function find_profile() {
-        $profile = $this->query(array('name' => 'DEFAULT'));
-        if (empty($profile)) {
-            $profile_data = array('name' => 'DEFAULT');
-            $id = parent::create($profile_data);
-            $profile = $this->find_by_id($id);
-        }
-        return $profile;
-    }
-
-    public function upload_logo() {
-        $logo_path = realpath(BASEPATH . '../uploads/logo');
+    public function upload() {
         $config = array(
             'allowed_types' => 'png|PNG|jpeg|JPEG|jpg|JPG|gif',
-            'upload_path' => $logo_path,
+            'upload_path' => $this->image_path,
             'max_size' => 8000
         );
         $result = array();
@@ -51,17 +42,33 @@ class Profile_model extends MY_Model {
             );
             $config = array(
                 'source_image' => $result['upload_data']['full_path'],
-                'new_image' => $this->upload_path . '/thumbs',
+                'new_image' => $this->thumb_path,
                 'maintain_ratio' => TRUE,
                 'width' => 200,
                 'height' => 200
             );
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
-            $result['logo_url'] = base_url() . 'uploads/logo/' . $upload['file'];
-            $result['thumb_url'] = base_url() . 'uploads/thumbs/' . $upload['file'];
+            $upload['thumb_url'] = base_url() . 'uploads/thumbs/' . $result['upload_data']['file_name'];
+            $img_id = $this->create($upload);
+            $result['img_id'] = $img_id;
         }
         return $result;
     }
 
+    public function delete_image($id) {
+        $img = $this->find_by_id($id);
+        if (!empty($img)) {
+            $file_name = $img->full_path;
+            $thumbnail_name = $img->path . '/thumbs/' . $img->name;
+            if (file_exists($file_name)) {
+                unlink($file_name);
+            }
+            if (file_exists($thumbnail_name)) {
+                unlink($thumbnail_name);
+            }
+        }
+    }
+
 }
+

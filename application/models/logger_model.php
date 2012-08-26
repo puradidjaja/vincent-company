@@ -83,9 +83,9 @@ class Logger_model extends MY_Model {
 
     public function find_by_day_and_link($ip, $link) {
         $data = array();
-        $this->db->select('DATE(date_time) as day')
+        $this->db->select('logger.ip,logger.date_time,logger.link')
                 ->from($this->table_name)
-                ->where(array('ip' => $ip, 'link' => $link,'DATE(date_time)'=>date('Y-m-d')));
+                ->where(array('ip' => $ip,'link'=>$link,'DATE(date_time)<='=>'DATE(NOW())'));
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {

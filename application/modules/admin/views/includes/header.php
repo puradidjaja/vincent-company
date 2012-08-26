@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>sangkuriangindo.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title><?php echo $profile->website_name; ?></title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css">
+         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/admin.css">
         <link href="<?php echo base_url(); ?>assets/css/font-awesome.css" rel="stylesheet">
         <?php if (isset($css)): ?>
@@ -40,32 +41,30 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span> 				
                     </a>
-                    <a class="brand active" href="<?php echo base_url(); ?>">sangkuriangindo.com</a>
+                    <a class="brand" href="<?php echo base_url(); ?>"><?php echo $profile->website_name; ?></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li <?php if ($this->uri->segment(1) == "admin") echo ' class="active"'; ?>>
+                            <li <?php if ($this->uri->segment(2) == "") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin'); ?>" ><i class="icon-home"></i> Home</a>
                             </li>
 
-                            <li  <?php if ($this->uri->segment(1) == "account") echo ' class="active"'; ?>>
+                            <li  <?php if ($this->uri->segment(2) == "account") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin/account'); ?>"><i class="icon-group"></i> Account</a>
                             </li>
-                            <li  <?php if ($this->uri->segment(1) == "area") echo ' class="active"'; ?>>
-                                <a href="<?php echo site_url('admin/area'); ?>"><i class="icon-globe"></i> Area</a>
+                            <li  <?php if ($this->uri->segment(2) == "area") echo ' class="active"'; ?>>
+                                <a href="<?php echo site_url('admin/area'); ?>"><i class="icon-globe"></i>Branch Area</a>
                             </li>
-                            <li  <?php if ($this->uri->segment(1) == "article") echo ' class="active"'; ?>>
+                            <li  <?php if ($this->uri->segment(2) == "article") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin/article'); ?>"><i class="icon-rss"></i> Article</a>
                             </li>
-                            <li  <?php if ($this->uri->segment(1) == "profile") echo ' class="active"'; ?>>
-                                <a href="<?php echo site_url('admin/profile'); ?>"><i class="icon-asterisk"></i> Profile</a>
-                            </li>
-                            <li  <?php if ($this->uri->segment(1) == "product") echo ' class="active"'; ?>>
+                           
+                            <li  <?php if ($this->uri->segment(2) == "product") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin/product'); ?>"><i class="icon-tags"></i> Product</a>
                             </li>
-                            <li  <?php if ($this->uri->segment(1) == "image") echo ' class="active"'; ?>>
+                            <li  <?php if ($this->uri->segment(2) == "image") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin/image'); ?>"><i class="icon-camera"></i> Image</a>
                             </li>
-                            <li  <?php if ($this->uri->segment(1) == "video") echo ' class="active"'; ?>>
+                            <li  <?php if ($this->uri->segment(2) == "video") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin/video'); ?>"><i class="icon-film"></i> Video (YouTube only)</a>
                             </li>
 
