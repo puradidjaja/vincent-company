@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 28, 2012 at 03:24 AM
+-- Generation Time: Aug 28, 2012 at 01:57 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -184,12 +184,36 @@ INSERT INTO `logger` (`id`, `ip`, `link`, `date_time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `portfolio`
+--
+
+CREATE TABLE IF NOT EXISTS `portfolio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `year` int(4) NOT NULL,
+  `project` varchar(200) NOT NULL,
+  `experties` varchar(200) NOT NULL,
+  `client` varchar(100) NOT NULL,
+  `function` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `portfolio`
+--
+
+INSERT INTO `portfolio` (`id`, `year`, `project`, `experties`, `client`, `function`) VALUES
+(2, 2012, 'Coconuts', 'Java', '-', 'Voting event monitoring through SMS Gateway');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `type` enum('product','service') NOT NULL,
   `link` varchar(75) NOT NULL,
   `description` text NOT NULL,
   `tags` text NOT NULL,
@@ -197,7 +221,16 @@ CREATE TABLE IF NOT EXISTS `product` (
   `thumb` varchar(150) NOT NULL,
   `is_gallery` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `type`, `link`, `description`, `tags`, `image_url`, `thumb`, `is_gallery`) VALUES
+(2, 'Software & Computation', 'service', 'computation2012-08-28', '<h2>What we do</h2>\r\n<div class="row">\r\n<div class="span5">\r\n<p>The Software and Computation Departement mainly doing two major jobs: Software development and analyzing computational processes.</p>\r\n</div>\r\n</div>', 'computation,java,algorithm,web', 'http://localhost/vincent-company/uploads/images/Lighthouse.jpg', 'http://localhost/vincent-company/uploads/thumbs/Lighthouse.jpg', 1),
+(3, 'Marine & Underwater', 'service', 'marine--underwater2012-08-28', '<h2>What we do</h2>\r\n<div class="row">\r\n<div class="span5">\r\n<p>The Marine &amp; Underwater department provide a support for marine &amp; underwater technology solution, especially navigation and military support system.</p>\r\n</div>\r\n</div>', 'marine,underwater', 'http://localhost/vincent-company/uploads/images/Penguins.jpg', 'http://localhost/vincent-company/uploads/thumbs/Penguins.jpg', 1),
+(4, 'Electronics', 'service', 'electronics2012-08-28', '<h2>What we do</h2>\r\n<div class="row">\r\n<div class="span5">\r\n<p>The Electronics department provide a prototyping service of a digital electronics device and instrument for several environment sensing and remote monitoring.</p>\r\n</div>\r\n</div>', 'electronic,digital,networking', 'http://localhost/vincent-company/uploads/images/Jellyfish.jpg', 'http://localhost/vincent-company/uploads/thumbs/Jellyfish.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -212,6 +245,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `address` varchar(250) NOT NULL,
   `logo` varchar(200) NOT NULL,
   `logo_thumb` varchar(200) NOT NULL,
+  `home_video` varchar(100) NOT NULL,
   `addr_x` decimal(8,5) NOT NULL,
   `addr_y` decimal(8,5) NOT NULL,
   `about` text NOT NULL,
@@ -225,8 +259,8 @@ CREATE TABLE IF NOT EXISTS `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id`, `website_name`, `name`, `address`, `logo`, `logo_thumb`, `addr_x`, `addr_y`, `about`, `contact`, `email`) VALUES
-(1, 'Man-Utd', 'DEFAULT', 'Taman Hewan 22, Bandung', 'http://localhost/vincent-company/uploads/images/keripik_lele_logo_large.png', 'http://localhost/vincent-company/uploads/thumbs/keripik_lele_logo_large.png', -6.89372, 107.60841, '<h1><img class="float_left" src="http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg?w=300&amp;h=95" alt="" width="300" /></h1>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<h2 style="padding-left: 30px;">&nbsp;</h2>\r\n<h1>About SWG [Siliwangi Wirakarya Ganesha]</h1>\r\n<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
+INSERT INTO `profile` (`id`, `website_name`, `name`, `address`, `logo`, `logo_thumb`, `home_video`, `addr_x`, `addr_y`, `about`, `contact`, `email`) VALUES
+(1, 'Berenyit', 'DEFAULT', 'Taman Hewan 22, Bandung', 'http://localhost/vincent-company/uploads/images/Logo_Resmi_SWG_Crop_30p.jpg', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg', '7rDRQ0wwLVw', -6.89372, 107.60841, '<h1><img class="float_left" src="http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg?w=300&amp;h=95" alt="" width="300" /></h1>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<h2 style="padding-left: 30px;">&nbsp;</h2>\r\n<h1>About SWG [Siliwangi Wirakarya Ganesha]</h1>\r\n<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
 
 -- --------------------------------------------------------
 
@@ -286,7 +320,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `email`, `password`, `role`, `last_logged_in`, `last_ip`) VALUES
 (1, 'shinji_kagawa@man-utd.co.uk', 'asdqwe123', 2, '0000-00-00 00:00:00', ''),
 (2, 'rvp@man-utd.co.uk', 'd164b39e9ec43f65376629da9ccf41780775f656', 2, '0000-00-00 00:00:00', ''),
-(3, 'satria.prayoga@gmail.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-28 00:17:47', '127.0.0.1');
+(3, 'satria.prayoga@gmail.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-28 05:19:00', '127.0.0.1');
 
 -- --------------------------------------------------------
 
