@@ -46,7 +46,9 @@
                 </div>
                 <div class="widget-content">
                     <p><strong>Company Name: <?php echo $profile->company_name; ?></strong></p>
-                    <img src="<?php echo $profile->logo_thumb; ?>" alt="" class="thumbnail" id="preview-thumb"/><br>
+                    <?php if(!empty($profile->logo)):?>
+                        <img src="<?php echo $profile->logo_thumb; ?>" alt="" class="thumbnail" id="preview-thumb"/><br>
+                    <?php endif;?>
                     <p>Address:
                     <span>
                         <?php echo $profile->address; ?>

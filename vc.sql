@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 28, 2012 at 10:15 PM
+-- Generation Time: Aug 29, 2012 at 01:05 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `website_name`, `company_name`, `slogan`, `name`, `address`, `logo`, `logo_thumb`, `home_video`, `addr_x`, `addr_y`, `about`, `contact`, `email`) VALUES
-(1, 'Ragajimesin', 'Siliwangi Wirakarya Ganesha', 'So Far So Good', 'DEFAULT', 'Taman Hewan 22, Bandung', 'http://localhost/vincent-company/uploads/images/Logo_Resmi_SWG_Crop_30p.jpg', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg', 'cfOa1a8hYP8', -6.89372, 107.60841, '<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p style="text-align: justify;">&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
+(1, 'Ragajimesin', 'Siliwangi Wirakarya Ganesha', 'So Far So Good', 'DEFAULT', 'Taman Hewan 22, Bandung', '', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg', '0', -6.89372, 107.60841, '<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p style="text-align: justify;">&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
 
 -- --------------------------------------------------------
 
@@ -212,7 +212,14 @@ CREATE TABLE IF NOT EXISTS `statistic` (
   `ip` varchar(64) NOT NULL,
   `date_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+
+--
+-- Dumping data for table `statistic`
+--
+
+INSERT INTO `statistic` (`id`, `section`, `action`, `uri`, `ip`, `date_time`) VALUES
+(60, 'home', 'index', '', '127.0.0.1', '2012-08-29 12:15:27');
 
 -- --------------------------------------------------------
 
@@ -235,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `role`, `last_logged_in`, `last_ip`) VALUES
-(3, 'satria.prayoga@gmail.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-28 20:51:58', '127.0.0.1');
+(3, 'gilang_tsatrian@yahoo.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-29 01:00:33', '127.0.0.1');
 
 -- --------------------------------------------------------
 

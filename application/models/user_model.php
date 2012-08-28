@@ -10,13 +10,13 @@
  *
  * @author satriaprayoga
  */
-class User_model extends MY_Model{
-    
+class User_model extends MY_Model {
+
     public function __construct() {
         parent::__construct();
         $this->table_name = 'user';
     }
-    
+
     public function create(array $data) {
         $user_id = parent::create(array(
                     'email' => $data['email'],
@@ -25,8 +25,8 @@ class User_model extends MY_Model{
                 ));
         return $user_id;
     }
-   
-     public function find_by_email($email) {
+
+    public function find_by_email($email) {
         return $this->query(array('email' => $email));
     }
 
@@ -49,8 +49,14 @@ class User_model extends MY_Model{
         return $user_id;
     }
 
+    public function update_email($email, $user_id) {
+        $this->db->update($this->table_name, array('email' => $email), array('id' => $user_id));
+
+        return $user_id;
+    }
+
     public function login($data = array()) {
-        $query = $this->db->get_where($this->table_name, array('email' => $data['email'], 
+        $query = $this->db->get_where($this->table_name, array('email' => $data['email'],
             'password' => sha1($data['password'])));
         $user_id = 0;
         $is_valid = ($query->num_rows() > 0);
@@ -61,6 +67,7 @@ class User_model extends MY_Model{
         }
 
         return $user_id;
-    } 
+    }
+
 }
 

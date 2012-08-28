@@ -1,33 +1,46 @@
 <?php $this->load->view('includes/header') ?>
 
 <header>
-    
-    <div class="container">
-        
-        <div class="row">
-            <div class="span4 pull-left">
-                <img src="<?php echo $profile->logo; ?>" />
-            </div>
-            <div class="span8 pull-right">
-                <div id=homeCarousel class="carousel slide">
-                    <!-- Carousel items -->
-                    <div class=carousel-inner>
-                        <?php foreach ($products as $p): ?>
-                            <div class="item" >
-                                <img src="<?php echo $p->image_url; ?>" alt="" class="img-rounded"/>
-                                <div class="carousel-caption">
-                                    <h1><?php echo $p->name; ?></h1>
-                                    <a href="#" class="btn btn-warning">View More &raquo;</a>
-                                </div>
-                            </div>
 
-                        <?php endforeach; ?>
-                    </div>
-                    <!-- Carousel nav -->
-                    <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-                    <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+    <div class="container">
+
+        <div class="row">
+            <?php if (!empty($profile->logo)): ?>
+                <div class="span4 pull-left">
+                    <img src="<?php echo $profile->logo; ?>" />
                 </div>
-            </div>
+            <?php else: ?>
+                <div class="span4 pull-left">
+                    <h1>Your Logo and Slogan Here</h1>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($products) && count($products)): ?>
+                <div class="span8 pull-right">
+                    <div id=homeCarousel class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class=carousel-inner>
+                            <?php foreach ($products as $p): ?>
+                                <div class="item" >
+                                    <img src="<?php echo $p->image_url; ?>" alt="" class="img-rounded"/>
+                                    <div class="carousel-caption">
+                                        <h1><?php echo $p->name; ?></h1>
+                                        <a href="#" class="btn btn-warning">View More &raquo;</a>
+                                    </div>
+                                </div>
+
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- Carousel nav -->
+                        <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+                        <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="span8 pull-right">
+                    <h1>Your Slideshow here</h1>
+                </div>
+            <?php endif; ?>
         </div>
 </header>
 <div class="main">
@@ -65,7 +78,15 @@
                     ?>
 
                 </div>
-<?php endif; ?>
+            <?php else: ?>
+                <div class="span6">
+                    <h2 class="page-heading">
+                        <i class="icon-film"></i>&nbsp;Video
+                    </h2>
+                    <h3>Your video here</h3>
+
+                </div>
+            <?php endif; ?>
 
 
 
@@ -80,7 +101,7 @@
         <div class="row">
             <div class="span8">
                 <h2 class="page-header"><i class="icon-facebook icon-large"></i> Likes &amp; Comments</h2>
-<?php echo like_comment(array('url' => site_url(), 'width' => 500)); ?>
+                <?php echo like_comment(array('url' => site_url(), 'width' => 500)); ?>
 
             </div>
             <div class="span4 pull-right">
@@ -117,8 +138,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
         $('.carousel').carousel({
-                interval: 3000,
-                pause:'hover'
-            });
+            interval: 3000,
+            pause:'hover'
+        });
     </script>
-<?php $this->load->view('includes/footer'); ?>
+    <?php $this->load->view('includes/footer'); ?>
