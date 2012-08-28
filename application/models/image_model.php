@@ -59,8 +59,8 @@ class Image_model extends MY_Model {
     public function delete_image($id) {
         $img = $this->find_by_id($id);
         if (!empty($img)) {
-            $file_name = $img->full_path;
-            $thumbnail_name = $img->path . '/thumbs/' . $img->name;
+            $file_name = $this->image_path.'/'.$img->name;
+            $thumbnail_name = $this->thumb_path.'/' . $img->name;
             if (file_exists($file_name)) {
                 unlink($file_name);
             }
@@ -68,6 +68,7 @@ class Image_model extends MY_Model {
                 unlink($thumbnail_name);
             }
         }
+        $this->delete($id);
     }
 
 }

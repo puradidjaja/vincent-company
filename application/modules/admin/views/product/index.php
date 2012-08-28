@@ -38,6 +38,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+             <?php echo $this->pagination->create_links(); ?>
             <?php else : ?>
                 <h1 class="page-header">No Product Found</h1>
                

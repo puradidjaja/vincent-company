@@ -44,6 +44,11 @@ $route['404_override'] = '';
 $route['article']="home/article/index";
 $route['article/(:any)']="home/article/show/$1";
 $route['about']="home/about/index";
+$route['about/profile/(:any)']="home/about/profile/$1";
 $route['contact']="home/contact/index";
+$route['contact/area/(:any)']="home/contact/area/$1";
+$route['product']="home/product/index";
+$route['product/(:any)']="home/product/show/$1";
+$route['portfolio']="home/portfolio/index";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 28, 2012 at 01:57 PM
+-- Generation Time: Aug 28, 2012 at 10:15 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -38,14 +38,6 @@ CREATE TABLE IF NOT EXISTS `account` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `account`
---
-
-INSERT INTO `account` (`id`, `user_id`, `name`, `avatar_url`, `profile`, `address`, `phone`, `link`) VALUES
-(1, 1, 'Shinji Kagawa', 'http://localhost/vincent-company/uploads/images/blank.jpg', '', '', '', ''),
-(2, 2, 'Robin Van Persie', 'http://localhost/vincent-company/uploads/images/blank.jpg', '', '', '', 'robin-van-persie2012-08-26');
 
 -- --------------------------------------------------------
 
@@ -82,16 +74,9 @@ CREATE TABLE IF NOT EXISTS `article` (
   `update_date` datetime NOT NULL,
   `author` varchar(100) NOT NULL,
   `tags` varchar(200) NOT NULL,
+  `counter` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `article`
---
-
-INSERT INTO `article` (`id`, `title`, `link`, `summary`, `is_linked`, `image_url`, `thumb`, `status`, `content`, `create_date`, `update_date`, `author`, `tags`) VALUES
-(2, 'Artikel Bebas', 'artikel-bebas-2012-08-28', 'Bebas tapi sopan, naik gratis turun bayar', 1, 'http://localhost/vincent-company/uploads/images/Jellyfish.jpg', 'http://localhost/vincent-company/uploads/thumbs/Jellyfish.jpg', 2, '<h1>Test</h1>\r\n<p>yakinlah ini cuma test aja</p>', '2012-08-28 01:23:21', '2012-08-28 01:23:21', 'admin', 'test'),
-(3, 'Coba Lagi', 'coba-lagi-2012-08-28', 'Coba Lagi Aja', 0, '', '', 2, '<h1>Sudah Betul</h1>', '2012-08-28 02:32:47', '2012-08-28 02:32:47', 'admin', 'test');
 
 -- --------------------------------------------------------
 
@@ -144,42 +129,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   `date` datetime NOT NULL,
   `thumb_url` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
-
---
--- Dumping data for table `image`
---
-
-INSERT INTO `image` (`id`, `name`, `file`, `type`, `caption`, `description`, `date`, `thumb_url`) VALUES
-(16, 'Koala.jpg', 'Koala.jpg', 'image/j', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/Koala.jpg'),
-(17, 'Lighthouse.jpg', 'Lighthouse.jpg', 'image/j', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/Lighthouse.jpg'),
-(18, 'Penguins.jpg', 'Penguins.jpg', 'image/j', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/Penguins.jpg'),
-(19, 'Tulips.jpg', 'Tulips.jpg', 'image/j', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/Tulips.jpg'),
-(20, 'Jellyfish.jpg', 'Jellyfish.jpg', 'image/j', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/Jellyfish.jpg'),
-(21, 'Logo_Resmi_SWG_Crop_30p.jpg', 'Logo_Resmi_SWG_Crop_30p.jpg', 'image/j', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg'),
-(22, 'logohohoresize.png', 'logohohoresize.png', 'image/p', '', '', '2012-08-26 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/logohohoresize.png'),
-(23, 'keripik_lele_logo_large.png', 'keripik_lele_logo_large.png', 'image/p', '', '', '2012-08-28 00:00:00', 'http://localhost/vincent-company/uploads/thumbs/keripik_lele_logo_large.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `logger`
---
-
-CREATE TABLE IF NOT EXISTS `logger` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(64) NOT NULL,
-  `link` varchar(100) NOT NULL,
-  `date_time` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
-
---
--- Dumping data for table `logger`
---
-
-INSERT INTO `logger` (`id`, `ip`, `link`, `date_time`) VALUES
-(14, '127.0.0.1', 'http://localhost/vincent-company/', '2012-08-26 07:59:39');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 -- --------------------------------------------------------
 
@@ -196,13 +146,6 @@ CREATE TABLE IF NOT EXISTS `portfolio` (
   `function` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `portfolio`
---
-
-INSERT INTO `portfolio` (`id`, `year`, `project`, `experties`, `client`, `function`) VALUES
-(2, 2012, 'Coconuts', 'Java', '-', 'Voting event monitoring through SMS Gateway');
 
 -- --------------------------------------------------------
 
@@ -221,16 +164,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `thumb` varchar(150) NOT NULL,
   `is_gallery` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`id`, `name`, `type`, `link`, `description`, `tags`, `image_url`, `thumb`, `is_gallery`) VALUES
-(2, 'Software & Computation', 'service', 'computation2012-08-28', '<h2>What we do</h2>\r\n<div class="row">\r\n<div class="span5">\r\n<p>The Software and Computation Departement mainly doing two major jobs: Software development and analyzing computational processes.</p>\r\n</div>\r\n</div>', 'computation,java,algorithm,web', 'http://localhost/vincent-company/uploads/images/Lighthouse.jpg', 'http://localhost/vincent-company/uploads/thumbs/Lighthouse.jpg', 1),
-(3, 'Marine & Underwater', 'service', 'marine--underwater2012-08-28', '<h2>What we do</h2>\r\n<div class="row">\r\n<div class="span5">\r\n<p>The Marine &amp; Underwater department provide a support for marine &amp; underwater technology solution, especially navigation and military support system.</p>\r\n</div>\r\n</div>', 'marine,underwater', 'http://localhost/vincent-company/uploads/images/Penguins.jpg', 'http://localhost/vincent-company/uploads/thumbs/Penguins.jpg', 1),
-(4, 'Electronics', 'service', 'electronics2012-08-28', '<h2>What we do</h2>\r\n<div class="row">\r\n<div class="span5">\r\n<p>The Electronics department provide a prototyping service of a digital electronics device and instrument for several environment sensing and remote monitoring.</p>\r\n</div>\r\n</div>', 'electronic,digital,networking', 'http://localhost/vincent-company/uploads/images/Jellyfish.jpg', 'http://localhost/vincent-company/uploads/thumbs/Jellyfish.jpg', 1);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -241,6 +175,8 @@ INSERT INTO `product` (`id`, `name`, `type`, `link`, `description`, `tags`, `ima
 CREATE TABLE IF NOT EXISTS `profile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `website_name` varchar(50) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `slogan` varchar(125) NOT NULL,
   `name` varchar(20) NOT NULL,
   `address` varchar(250) NOT NULL,
   `logo` varchar(200) NOT NULL,
@@ -259,8 +195,8 @@ CREATE TABLE IF NOT EXISTS `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id`, `website_name`, `name`, `address`, `logo`, `logo_thumb`, `home_video`, `addr_x`, `addr_y`, `about`, `contact`, `email`) VALUES
-(1, 'Berenyit', 'DEFAULT', 'Taman Hewan 22, Bandung', 'http://localhost/vincent-company/uploads/images/Logo_Resmi_SWG_Crop_30p.jpg', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg', '7rDRQ0wwLVw', -6.89372, 107.60841, '<h1><img class="float_left" src="http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg?w=300&amp;h=95" alt="" width="300" /></h1>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<p style="padding-left: 30px;">&nbsp;</p>\r\n<h2 style="padding-left: 30px;">&nbsp;</h2>\r\n<h1>About SWG [Siliwangi Wirakarya Ganesha]</h1>\r\n<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
+INSERT INTO `profile` (`id`, `website_name`, `company_name`, `slogan`, `name`, `address`, `logo`, `logo_thumb`, `home_video`, `addr_x`, `addr_y`, `about`, `contact`, `email`) VALUES
+(1, 'Ragajimesin', 'Siliwangi Wirakarya Ganesha', 'So Far So Good', 'DEFAULT', 'Taman Hewan 22, Bandung', 'http://localhost/vincent-company/uploads/images/Logo_Resmi_SWG_Crop_30p.jpg', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg', 'cfOa1a8hYP8', -6.89372, 107.60841, '<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p style="text-align: justify;">&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
 
 -- --------------------------------------------------------
 
@@ -276,26 +212,7 @@ CREATE TABLE IF NOT EXISTS `statistic` (
   `ip` varchar(64) NOT NULL,
   `date_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
-
---
--- Dumping data for table `statistic`
---
-
-INSERT INTO `statistic` (`id`, `section`, `action`, `uri`, `ip`, `date_time`) VALUES
-(43, 'home', 'index', '', '127.0.0.1', '2012-08-28 12:53:14'),
-(44, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:13:56'),
-(45, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:15:43'),
-(46, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:17:13'),
-(47, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:17:42'),
-(48, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:19:28'),
-(49, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:20:45'),
-(50, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:21:01'),
-(51, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:24:27'),
-(52, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:26:34'),
-(53, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:26:53'),
-(54, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:27:01'),
-(55, 'home', 'index', '', '127.0.0.1', '2012-08-28 01:28:24');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
 
 -- --------------------------------------------------------
 
@@ -318,9 +235,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `role`, `last_logged_in`, `last_ip`) VALUES
-(1, 'shinji_kagawa@man-utd.co.uk', 'asdqwe123', 2, '0000-00-00 00:00:00', ''),
-(2, 'rvp@man-utd.co.uk', 'd164b39e9ec43f65376629da9ccf41780775f656', 2, '0000-00-00 00:00:00', ''),
-(3, 'satria.prayoga@gmail.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-28 05:19:00', '127.0.0.1');
+(3, 'satria.prayoga@gmail.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-28 20:51:58', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -335,17 +250,6 @@ CREATE TABLE IF NOT EXISTS `video` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
-
---
--- Dumping data for table `video`
---
-
-INSERT INTO `video` (`id`, `src`, `thumbnail_src`, `name`) VALUES
-(15, 'cfOa1a8hYP8', 'http://img.youtube.com/vi/cfOa1a8hYP8/0.jpg', 'Radiohead - Lotus Flower'),
-(17, 'RUmmsMeHAaE', 'http://img.youtube.com/vi/RUmmsMeHAaE/0.jpg', 'Gnarls Barkley - Reckoner (Radiohead cover li'),
-(18, 'SDTZ7iX4vTQ', 'http://img.youtube.com/vi/SDTZ7iX4vTQ/0.jpg', 'Foster The People - Pumped Up Kicks'),
-(19, 'U8NNHmV3QPw', 'http://img.youtube.com/vi/U8NNHmV3QPw/0.jpg', 'Spirit Science 12 - The Human History Movie'),
-(20, '7rDRQ0wwLVw', 'http://img.youtube.com/vi/7rDRQ0wwLVw/0.jpg', 'Standup Comedy Show Metro TV Spesial Akhir Ta');
 
 --
 -- Constraints for dumped tables

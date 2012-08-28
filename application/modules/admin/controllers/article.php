@@ -15,17 +15,19 @@ class Article extends Admin_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('article_model');
+        $this->load->model('comment_model');
     }
 
     public function index() {
-        $uri = $this->uri->segment(3);
+        $uri = $this->uri->segment(4);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
-        $per_page = 6;
+        $per_page = 10;
         $article_data = $this->article_model->page($per_page, $offset);
         $total = count($this->article_model->find_all());
         $this->load->library('pagination');
         $data['articles'] = $article_data;
         $config = array();
+        $config['uri_segment'] = '4';
         $config['base_url'] = site_url('admin/article/index');
         $config['total_rows'] = $total;
         $config['per_page'] = $per_page;
@@ -135,8 +137,15 @@ class Article extends Admin_Controller {
 
     public function detail($id) {
         $article = $this->article_model->find_by_id($id);
+        $comments = $this->comment_model->find_by_article_id($id);
         $data['article'] = $article;
+        $data['comments'] = $comments;
         $this->view('article/detail', $data);
+    }
+
+    public function delete_comment($article_id, $id) {
+        $this->comment_model->delete($id);
+        redirect('admin/article/detail/' . $article_id);
     }
 
     public function delete($id) {

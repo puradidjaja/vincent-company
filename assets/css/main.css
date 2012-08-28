@@ -90,7 +90,7 @@ body {
 }
 
 .navbar .nav > li > a:hover{
-   
+
     color:#222222;
 }
 
@@ -156,6 +156,9 @@ div.carousel-caption h1 {
 div.carousel-caption p {
     font-size: 20px;
 }
+
+
+
 div.carousel .item > img {
     display: block;
     width: 100%;

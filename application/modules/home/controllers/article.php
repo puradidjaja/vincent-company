@@ -10,14 +10,14 @@
  *
  * @author satriaprayoga
  */
-class Article extends Home_Controller{
-    
+class Article extends Home_Controller {
+
     public function __construct() {
         parent::__construct();
         $this->load->model('article_model');
     }
-    
-    public function index(){
+
+    public function index() {
         $uri = $this->uri->segment(3);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
         $per_page = 6;
@@ -52,10 +52,20 @@ class Article extends Home_Controller{
         $this->pagination->initialize($config);
         $this->view('article/index', $data);
     }
-    
-    public function show($link){
-        $data['article']=  $this->article_model->find_by_link($link);
-        $this->view('article/view',$data);
+
+    public function show($link) {
+        $article = $this->article_model->find_by_link($link);
+        if (!isset($_COOKIE['article_show'])) {
+            setcookie('article_show', $this->input->ip_address(), time() + 86400);
+        }
+
+        $article_id = $article->id;
+        if (!isset($_COOKIE['article_show'][$article_id])) {
+            $count = $article->counter;
+            $this->article_model->update($article_id, array('counter' => $count + 1));
+            setcookie('article_show[' . $article_id . ']', 'read', time() + 86400);
+        }
     }
+
 }
 

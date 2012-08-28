@@ -20,7 +20,7 @@ class Image extends Admin_Controller {
     public function index() {
         $uri = $this->uri->segment(4);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
-        $per_page = 4;
+        $per_page = 10;
         $image_data = $this->image_model->page($per_page, $offset);
         $total = count($this->image_model->find_all());
         $this->load->library('pagination');
@@ -99,6 +99,11 @@ class Image extends Admin_Controller {
             echo json_encode($arr);
         }
       
+    }
+    
+    public function delete($id){
+        $this->image_model->delete_image($id);
+        redirect(site_url('admin/image'));
     }
     
     

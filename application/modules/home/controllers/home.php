@@ -12,10 +12,7 @@ class Home extends Home_Controller {
     }
 
     public function index() {
-        
-        $data['products']=  $this->product_model->find_service(1);
-        $data['rss']=  $this->article_model->find_publish_limited(4,1);
-        $this->view('home',$data);
+       
     }
 
 }

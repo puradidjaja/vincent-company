@@ -19,14 +19,15 @@ class Product extends Admin_Controller {
     }
     
     public function index() {
-        $uri = $this->uri->segment(3);
+        $uri = $this->uri->segment(4);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
-        $per_page = 3;
+        $per_page = 10;
         $product_data = $this->product_model->page($per_page, $offset);
         $total = count($this->product_model->find_all());
         $this->load->library('pagination');
         $data['products'] = $product_data;
         $config = array();
+        $config['uri_segment'] = '4';
         $config['base_url'] = site_url('admin/product/index');
         $config['total_rows'] = $total;
         $config['per_page'] = $per_page;
