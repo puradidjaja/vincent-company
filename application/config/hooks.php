@@ -9,7 +9,12 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
+$hook['post_controller_constructor'] = array(
+    'class'    => 'Statistic',
+    'function' => 'log_activity',
+    'filename' => 'Statistic.php',
+    'filepath' => 'hooks'
+);
 
 
 /* End of file hooks.php */

@@ -66,6 +66,7 @@ class Product extends Admin_Controller {
                 'name'=>  $this->input->post('name'),
                 'description'=>  $this->input->post('description'),
                 'image_url' => $this->input->post('image_url'),
+                'thumb'=> $this->input->post('thumb'),
                 'tags'=>  $this->input->post('tags')
             );
             $data['product_data']=$product_data;
@@ -122,6 +123,11 @@ class Product extends Admin_Controller {
             $this->product_model->update($product->id,$product_data);
             redirect(site_url('admin/product/detail/'.$id));
         }
+    }
+    
+    public function delete($id){
+        $this->product_model->delete($id);
+        redirect('admin/product');
     }
 
     

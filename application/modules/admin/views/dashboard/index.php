@@ -82,16 +82,16 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
                                 <h1 class="page-header">Page Hit</h1>
                             </div>  	
                             <div class="span1">
-                                <h1><?php echo count($daily); ?></h1>
+                                <h1><?php echo $daily; ?></h1>
                                 today						    			
                             </div>
 
                             <div class="span1">
-                                <h1><?php echo count($monthly); ?></h1>
+                                <h1><?php echo $monthly; ?></h1>
                                 this month						    			
                             </div>
                             <div class="span1">
-                                <h1><?php echo count($yearly); ?></h1>
+                                <h1><?php echo $yearly; ?></h1>
                                 this year						    			
                             </div>
                             <div class="span1">

@@ -76,7 +76,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="<?php echo base_url(); ?>admin"><i class="icon-wrench"></i> Account Settings</a></li>
-                                <li><a href="<?php echo base_url(); ?>admin"><i class="icon-signout"></i> Log out</a></li>
+                                <li><a href="<?php echo base_url(); ?>admin/auth/logout"><i class="icon-signout"></i> Log out</a></li>
                                 <li class="divider"></li>
                                 <li class="nav-header">Nav header</li>
 

@@ -12,9 +12,13 @@
  */
 class Home_Controller extends MY_Controller {
 
+    var $data;
+    
     public function __construct() {
         parent::__construct();
-        $this->load->model('logger_model');
+        $this->load->model('profile_model');
+        $profile = $this->profile_model->find_profile();
+        $this->data['profile'] = $profile;
     }
 
     public function get_client_ip() {
@@ -28,20 +32,9 @@ class Home_Controller extends MY_Controller {
         return $ip;
     }
 
-    public function log_page($link='') {
-        $ip = $this->get_client_ip();
-        $now = date('Y-m-d h:i:s A');
-        
-        if(empty($link))
-            $link=site_url ();
-        $logger = $this->logger_model->find_by_day_and_link($ip,$link);
-        if (count($logger) == 0) {
-            $this->logger_model->create(array(
-                'ip' => $ip,
-                'date_time' => $now,
-                'link' => $link
-            ));
-        }
+    public function view($viewName, $data = array()) {
+        $data['profile'] = $this->data['profile'];
+        $this->load->view($viewName, $data);
     }
 
 }

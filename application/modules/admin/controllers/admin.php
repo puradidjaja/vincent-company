@@ -14,15 +14,15 @@ class Admin extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
-       $this->load->model('logger_model');
+       $this->load->model('statistic_model');
     }
 
     public function index() {
         
-        $data['daily'] = $this->logger_model->find_daily_log();
-        $data['monthly'] = $this->logger_model->find_monthly_log();
-        $data['yearly'] = $this->logger_model->find_yearly_log();
-        $data['total'] = $this->logger_model->find_all();
+        $data['daily'] = $this->statistic_model->find_daily_log();
+        $data['monthly'] = $this->statistic_model->find_monthly_log();
+        $data['yearly'] = $this->statistic_model->find_yearly_log();
+        $data['total'] = $this->statistic_model->find_all();
         $this->view('dashboard/index',$data);
     }
 
