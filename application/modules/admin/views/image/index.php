@@ -4,7 +4,7 @@ $assets = array(
         'fancybox/jquery.mousewheel-3.0.6.pack.js',
         'fancybox/jquery.fancybox.js',
         'fancybox/jquery.fancybox-buttons.js',
-        'fancybox/jquery.fancybox-thumbs.js',
+        'fancybox/jquery.fancybox-thumbs.js','fancybox.setting.js'
     ),
     'css' => array(
         'fancybox/jquery.fancybox.css',
@@ -23,6 +23,7 @@ $assets = array(
     </h1>
     <div class="widget">
         <div class="widget-header">
+            <div id="preview_thumb"></div>
             <h3>Image List</h3><a href="<?php echo site_url('admin/image');?>" class="btn"><i class="icon-refresh"></i>&nbsp; refresh</a>
         </div>
         <div class="widget-content">
@@ -44,25 +45,8 @@ $assets = array(
 <script>
     $(document).ready(function(){
         $('.logo-preview').hide();
-        $("#setImage").fancybox({
-
-            'width'				: '60%',
-
-            'height'			: '80%',
-
-            'hideOnOverlayClick': false, 
-
-            'autoScale'			: false,
-
-            'transitionIn'		: 'elastic',
-
-            'transitionOut'		: 'elastic',
-
-            'type'				: 'iframe',
-
-            'href' : site_url+'admin/image/upload_form/0/0'
-
-        });
+         init_fancybox(site_url+"admin/image/upload_form/0/0");
+        
         $('a.img-fancy').fancybox({ 
             openEffect  : 'none',
             closeEffect : 'none',

@@ -41,11 +41,11 @@
         <div class="span5">
             <div class="widget">
                 <div class="widget-header">
-                    <h3><i class="icon-info-sign icon-large"></i>&nbsp;&nbsp;Website Profile</h3>
-                    <i class="icon-pencil"></i><a href="<?php echo site_url('admin/profile/'.$profile->id) ?>" title="edit"> edit </a>
+                    <h3><i class="icon-info-sign icon-large"></i>&nbsp;&nbsp;<?php echo $profile->website_name; ?> Website Profile</h3>
+                    <i class="icon-edit"></i><a href="<?php echo site_url('admin/profile/'.$profile->id) ?>" title="edit" >&nbsp;&nbsp;edit</a>
                 </div>
                 <div class="widget-content">
-                    <p><strong>Website Name: <?php echo $profile->website_name; ?></strong></p>
+                    <p><strong>Company Name: <?php echo $profile->company_name; ?></strong></p>
                     <img src="<?php echo $profile->logo_thumb; ?>" alt="" class="thumbnail" id="preview-thumb"/><br>
                     <p>Address:
                     <span>

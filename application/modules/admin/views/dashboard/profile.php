@@ -5,7 +5,7 @@ $assets = array(
         'fancybox/jquery.fancybox.js',
         'fancybox/jquery.fancybox-buttons.js',
         'fancybox/jquery.fancybox-thumbs.js',
-        'tiny_mce/tiny_mce.js', 'wysiwyg.image.tinymce.js'
+        'tiny_mce/tiny_mce.js', 'wysiwyg.image.tinymce.js','fancybox.setting.js'
     ),
     'css' => array(
         'fancybox/jquery.fancybox.css',
@@ -83,6 +83,10 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
                     <?php echo form_open('admin/profile/'.$profile->id); ?>
                     <div id="form_store"  class="well">
                         <legend>Web Site Information</legend>
+                        Company Name: <br>
+                        <input type="text" name="company_name" id="company_name" class="input-xlarge" value="<?php echo $profile->company_name; ?>"/><br>
+                        Slogan: <br>
+                        <input type="text" name="slogan" id="slogan" class="input-xlarge" value="<?php echo $profile->slogan; ?>"/><br>
                         Website Name: <br>
                         <input type="text" name="website_name" id="website_name" class="input-xlarge" value="<?php echo $profile->website_name; ?>"/>
                         <legend>Area Information</legend>
@@ -143,32 +147,10 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
   
     
     $(document).ready(function(){
-        init_wysiwyg();
-      
+        init_wysiwyg(site_url+'admin/image/upload_form/1/1');
+        init_fancybox(site_url+"admin/image/upload_form/1/0");
         init_map();
-        $("#setImage").fancybox({
-
-            'width'				: '60%',
-
-            'height'			: '80%',
-
-            'hideOnOverlayClick': false, 
-
-            'autoScale'			: false,
-
-            'transitionIn'		: 'elastic',
-
-            'transitionOut'		: 'elastic',
-
-            'type'				: 'iframe',
-
-            'href' : site_url+'admin/image/upload_form/1/0'
-
-        });
-        $("#logo_thumb").change(function () {
-            $('#preview-thumb').attr('src', $("#logo_thumb").val());
-        }).change();
-                
+        
         
     });
 

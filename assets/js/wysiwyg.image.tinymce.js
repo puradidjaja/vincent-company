@@ -1,4 +1,4 @@
-function init_wysiwyg(){
+function init_wysiwyg(uri){
     $("#wysiwygImage").fancybox({
 
         'width'				: '80%',
@@ -15,7 +15,7 @@ function init_wysiwyg(){
 
         'type'				: 'iframe',
 
-        'href' : site_url+'admin/image/upload_form/1/1'
+        'href' : uri
 
     });
     tinyMCE.init({

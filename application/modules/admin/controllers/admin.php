@@ -39,6 +39,8 @@ class Admin extends Admin_Controller {
             $this->view('dashboard/profile', $data);
         } else {
             $profile_data = array(
+                'company_name'=>  $this->input->post('company_name'),
+                'slogan'=>  $this->input->post('slogan'),
                 'website_name'=>  $this->input->post('website_name'),
                 'addr_x' => $this->input->post('latlng'),
                 'addr_y' => $this->input->post('latlngy'),

@@ -5,7 +5,7 @@ $assets = array(
         'fancybox/jquery.fancybox.js',
         'fancybox/jquery.fancybox-buttons.js',
         'fancybox/jquery.fancybox-thumbs.js',
-        'tiny_mce/tiny_mce.js', 'wysiwyg.image.tinymce.js'
+        'tiny_mce/tiny_mce.js', 'wysiwyg.image.tinymce.js','fancybox.setting.js'
     ),
     'css' => array(
         'fancybox/jquery.fancybox.css',
@@ -71,29 +71,9 @@ $assets = array(
 </div>
 <script>
     $(document).ready(function(){
-        init_wysiwyg();
-        $("#setImage").fancybox({
-
-            'width'				: '60%',
-
-            'height'			: '80%',
-
-            'hideOnOverlayClick': false, 
-
-            'autoScale'			: false,
-
-            'transitionIn'		: 'elastic',
-
-            'transitionOut'		: 'elastic',
-
-            'type'				: 'iframe',
-
-            'href' : site_url+'admin/image/upload_form/1/0'
-
-        });
-        $("#logo_thumb").change(function () {
-            $('#preview-thumb').html("<img src='"+$('#logo_thumb').val()+"' class='thumbnail'/>");
-        }).change();
+        init_wysiwyg(site_url+'admin/image/upload_form/1/1');
+        init_fancybox(site_url+"admin/image/upload_form/1/0");
+        
     });
 </script>
 
