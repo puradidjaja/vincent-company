@@ -3,24 +3,24 @@
 
     <div class="widget">
         <div class="widget-header">
-            <h3><i class="icon-plus"></i>  Add New Video</h3>
+            <h3><i class="icon-plus"></i> Video</h3>
         </div>
         <div class="widget-content">
             <div class="well">
-                <?php echo form_open('admin/video/create'); ?>
+                <?php echo form_open($action); ?>
                 <fieldset><legend>YouTube Video Info</legend>
                     <?php echo form_error('video_url') ?>
                     <?php echo form_label('Source', 'source'); ?>
-                    <input type="text" id="video_url" class="input-xlarge" name="source"/>
-                    <input class="video_thumb" type="hidden" value="" name="thumbnail_src"/>
+                    <input type="text" id="video_url" class="input-xlarge" name="source" value="<?php echo (set_value('source'))?set_value('source'):$video_data['source'];?>"/>
+                    <input class="video_thumb" type="hidden" value="" name="thumbnail_src" value="<?php echo (set_value('thumbnail_src'))?set_value('thumbnail_src'):$video_data['thumbnail_src'];?>"/>
                     <div id="preview_thumb"></div>
                     <?php echo form_error('name') ?>
                     <?php echo form_label('Name', 'name'); ?>
-                    <input type="text" name="name" class="input-xlarge" id="vid_title"/>
+                    <input type="text" name="name" class="input-xlarge" id="vid_title" value="<?php echo (set_value('name'))?set_value('name'):$video_data['name'];?>"/>
                 </fieldset>
                 <div class="form-actions">
                     <?php
-                    echo form_button(array('id' => 'submit', 'value' => 'Add', 'name' => 'submit', 'type' => 'submit', 'content' => 'Add', 'class' => 'btn btn-primary'));
+                    echo form_button(array('id' => 'submit', 'value' => 'Save', 'name' => 'submit', 'type' => 'submit', 'content' => 'Save', 'class' => 'btn btn-primary'));
                     ?>
 
                     <a href="<?php echo site_url('admin/video'); ?>" class="btn">Cancel</a>

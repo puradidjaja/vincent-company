@@ -3,7 +3,7 @@
 
     <div class="widget">
         <div class="widget-header">
-            <h3><i class="icon-money"></i> Product Details
+            <h3><i class="icon-money"></i> Product/Service Details
                 <i class="icon-chevron-left"></i><a href="<?php echo site_url('admin/product'); ?>"title="back to list"> back </a>
                 <i class="icon-pencil"></i><a href="<?php echo site_url('admin/product/edit/' . $product->id); ?>" title="edit"> edit </a>
                 <i class="icon-trash"></i><a href="#account-modal" class="account-delete-btn" title="Delete" rel="tooltip" data-toggle="modal" 
@@ -12,7 +12,7 @@
             </h3>
         </div>
         <div class="widget-content">
-            <h3 class="page-header">Product Name: <?php echo $product->name;?></h3>
+            <h3 class="page-header"><?php echo $product->name;?>&mdash;<?php echo $product->type;?></h3>
              <blockquote><?php echo $product->tags;?></blockquote>
             <img src="<?php echo $product->thumb;?>" class="thumbnail"/>
            

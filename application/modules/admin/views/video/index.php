@@ -18,7 +18,7 @@
                                    action="<?php echo site_url('admin/video/delete/' . $video['id']); ?>"
                                    data-original-title="delete" title="delete"><i class="icon-remove"></i>
                                 </a>|
-                                <a href="#" title="edit"><i class="icon-edit"></i></a>
+                                <a href="<?php echo site_url('admin/video/edit/' . $video['id']); ?>" title="edit"><i class="icon-edit"></i></a>
 
                             </div>
                         </li>

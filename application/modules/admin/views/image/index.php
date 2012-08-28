@@ -15,11 +15,11 @@ $assets = array(
 ?>
 <?php $this->load->view('includes/header', $assets); ?>
 <div class="span12">
-    <h1 class="page-title">
-        <a id="setImage" class="btn" data-fancybox-type="iframe" ><i class="icon-picture" ></i>Upload Image</a>
+    <h1 class="page-title"> Image
+        <a id="setImage" class="btn btn-warning pull-right" data-fancybox-type="iframe" ><i class="icon-upload-alt" ></i>Upload Image</a>
+       
         <input type="hidden" id="logo_url" class="input-xlarge" value=" "/>
         <input type="hidden" id="logo_thumb" value=" "/>
-        
     </h1>
     <div class="widget">
         <div class="widget-header">

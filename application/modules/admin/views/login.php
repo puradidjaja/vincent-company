@@ -32,9 +32,9 @@ and open the template in the editor.
 
         <div id="login-header">
 
-            <h2>
-                <a href="#" class="" style="text-decoration: none; color: #fff;">admin</a>
-            </h2>
+            <p>
+                <a href="<?php echo base_url();?>" class="" style="text-decoration: none; color: #fff;">&larr; back</a>
+            </p>
             
         </div> <!-- /login-header -->
 

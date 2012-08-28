@@ -59,8 +59,13 @@ class Video extends Admin_Controller {
         $this->form_validation->set_error_delimiters('<div class="alert alert-error"><strong>Error: </strong>', '</div>');
         $this->form_validation->set_rules('source', 'Source', 'trim|required|xss_clean');
         $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+        $data['action']='admin/video/create';
         if($this->form_validation->run()===FALSE){
-              $this->view('video/create');
+              $video_data['source']=  $this->input->post('source');
+              $video_data['thumbnail_src']=  $this->input->post('thumbnail_src');
+              $video_data['name']=  $this->input->post('name');
+              $data['video_data']=$video_data;
+              $this->view('video/create',$data);
         }else{
             $video_data=array(
                 'name'=>  $this->input->post('name'),
@@ -71,6 +76,30 @@ class Video extends Admin_Controller {
             redirect(site_url('admin/video'));
         }
       
+    }
+    
+    public function edit($id){
+        $this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<div class="alert alert-error"><strong>Error: </strong>', '</div>');
+        $this->form_validation->set_rules('source', 'Source', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+        $data['action']='admin/video/edit/'.$id;
+        $video=  $this->video_model->find_by_id($id);
+        if($this->form_validation->run()===FALSE){
+              $video_data['source']=  $video->src;
+              $video_data['thumbnail_src']=  $video->thumbnail_src;
+              $video_data['name']=  $video->name;
+              $data['video_data']=$video_data;
+              $this->view('video/create',$data);
+        }else{
+            $video_data=array(
+                'name'=>  $this->input->post('name'),
+                'src'=>  $this->input->post('source'),
+                'thumbnail_src'=>  $this->input->post('thumbnail_src')
+            );
+            $this->video_model->update($id,$video_data);
+            redirect(site_url('admin/video'));
+        }
     }
     
     public function play($id){
