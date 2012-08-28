@@ -5,15 +5,16 @@ class Home extends Home_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('product_model');
         $this->load->model('article_model');
-        $this->load->helper(array('fb','twitter'));
+        $this->load->helper(array('fb','twitter','youtube'));
         
     }
 
     public function index() {
         
-        $data['articles']=  $this->article_model->find_publish_article();
-        $data['rss']=  $this->article_model->find_publish_limited(4);
+        $data['products']=  $this->product_model->find_service(1);
+        $data['rss']=  $this->article_model->find_publish_limited(4,1);
         $this->view('home',$data);
     }
 

@@ -26,10 +26,10 @@ class Article_model extends MY_Model {
         return $this->query(array('link'=>$link));
     }
 
-    public function find_publish_limited($limit = 4) {
+    public function find_publish_limited($limit = 4,$is_linked=0) {
         $data = array();
         $this->db->select('article.*')->from($this->table_name)
-                ->where(array('status' => 2, 'is_linked' => 0))
+                ->where(array('status' => 2, 'is_linked' => $is_linked))
                 ->limit($limit)->order_by('create_date', 'desc');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

@@ -19,13 +19,13 @@ $assets = array(
 
     <div class="widget">
         <div class="widget-header">
-            <h3>Product</h3>
+            <h3>Product/Service</h3>
         </div>
         <div class="widget-content">
             <div class="well">
                 <?php echo form_open($action); ?>
 
-                <fieldset><legend>Product</legend>
+                <fieldset><legend>Product/Service Information</legend>
 
                     <?php echo form_error('name') ?>
                     <?php echo form_label('Name', 'name'); ?>
@@ -41,7 +41,9 @@ $assets = array(
                     <?php echo form_label('Description', 'description'); ?>
                      <button id="wysiwygImage" class="btn"><i class="icon-picture" ></i> Insert Image </button>
                     <textarea name="description" class="mceEditor"><?php echo (set_value('description'))?set_value('description'):$product_data['description'];?></textarea>
-                    <?php echo form_label('Tags', 'tags'); ?>
+                     <?php echo form_label('Type', 'type'); ?>
+                    <?php echo form_dropdown('type', array('product'=>'product','service'=>'service'), set_value('type')?set_value('type'):$product_data['type']);?>
+                    <?php echo form_label('Tags', 'tags');?>
                     <input type="text" name="tags" class="input-xlarge" value="<?php echo (set_value('tags'))?set_value('tags'):$product_data['tags'];?>"/>
                     <?php echo form_label('Add to Page Gallery', 'is_gallery'); ?>
                     <?php echo form_dropdown('is_gallery', array(1=>'Yes',0=>'No'), array(0));?>

@@ -67,7 +67,8 @@ class Product extends Admin_Controller {
                 'description'=>  $this->input->post('description'),
                 'image_url' => $this->input->post('image_url'),
                 'thumb'=> $this->input->post('thumb'),
-                'tags'=>  $this->input->post('tags')
+                'tags'=>  $this->input->post('tags'),
+                'type'=> $this->input->post('type')
             );
             $data['product_data']=$product_data;
             $this->view('product/form',$data);
@@ -79,6 +80,7 @@ class Product extends Admin_Controller {
                 'tags'=>  $this->input->post('tags'),
                 'thumb'=> $this->input->post('thumb'),
                 'is_gallery'=>$this->input->post('is_gallery'),
+                'type'=> $this->input->post('type'),
                 'link'=>  $this->_strip($this->input->post('name')).date('Y-m-d')
             );
             $product_id=$this->product_model->create($product_data);
@@ -106,7 +108,8 @@ class Product extends Admin_Controller {
                 'description'=>  $product->description,
                 'image_url' => $product->image_url,
                 'thumb' => $product->thumb,
-                'tags'=>  $product->tags
+                'tags'=>  $product->tags,
+                'type'=> $this->input->post('type')
             );
             $data['product_data']=$product_data;
             $this->view('product/form',$data);
@@ -118,6 +121,7 @@ class Product extends Admin_Controller {
                 'tags'=>  $this->input->post('tags'),
                 'thumb'=> $this->input->post('thumb'),
                 'is_gallery'=>$this->input->post('is_gallery'),
+                'type'=> $this->input->post('type')
                
             );
             $this->product_model->update($product->id,$product_data);

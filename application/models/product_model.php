@@ -16,4 +16,8 @@ class Product_model extends MY_Model{
         parent::__construct();
         $this->table_name='product';
     }
+    
+    public function find_service($is_gallery=0){
+        return $this->query_object_list(array('type'=>'service','is_gallery'=>$is_gallery));
+    }
 }

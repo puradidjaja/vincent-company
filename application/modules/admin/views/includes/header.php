@@ -59,7 +59,10 @@
                             </li>
                            
                             <li  <?php if ($this->uri->segment(2) == "product") echo ' class="active"'; ?>>
-                                <a href="<?php echo site_url('admin/product'); ?>"><i class="icon-tags"></i> Product</a>
+                                <a href="<?php echo site_url('admin/product'); ?>"><i class="icon-tags"></i> Product/Service</a>
+                            </li>
+                            <li  <?php if ($this->uri->segment(2) == "portfolio") echo ' class="active"'; ?>>
+                                <a href="<?php echo site_url('admin/portfolio'); ?>"><i class="icon-bookmark"></i> Portfolio</a>
                             </li>
                             <li  <?php if ($this->uri->segment(2) == "image") echo ' class="active"'; ?>>
                                 <a href="<?php echo site_url('admin/image'); ?>"><i class="icon-camera"></i> Image</a>

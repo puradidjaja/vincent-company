@@ -11,14 +11,12 @@
                 <div id=homeCarousel class="carousel slide">
                     <!-- Carousel items -->
                     <div class=carousel-inner>
-                        <?php foreach ($articles as $article): ?>
-                            <div class="item">
-                                <img src="<?php echo $article->image_url; ?>" alt=""/>
+                        <?php foreach ($products as $p): ?>
+                            <div class="item <?php if($p->name=='Electronics') echo 'active';?>" >
+                                <img src="<?php echo $p->image_url; ?>" alt=""/>
                                 <div class="carousel-caption">
-                                    <h1><?php echo $article->title; ?></h1>
-                                    <p><?php echo $article->summary; ?>
-                                        <a href="<?php echo site_url('article/' . $article->link); ?>" class="btn btn-warning">View More &raquo;</a>
-                                    </p>
+                                    <h1><?php echo $p->name; ?></h1>
+                                    <a href="#" class="btn btn-warning">View More &raquo;</a>
                                 </div>
                             </div>
 
@@ -52,6 +50,19 @@
                     <h2>No article yet</h2>
                 <?php endif; ?>
             </div>
+            <?php if(!empty($profile->home_video)):?>
+            <div class="span6">
+                <h2 class="page-heading">
+                    <i class="icon-film"></i>&nbsp;Video
+                </h2>
+                <?php echo youtube_player(array(
+                'width'=>560,
+                'height'=>315,
+                'src'=>$profile->home_video
+            ));?>
+
+            </div>
+            <?php endif;?>
 
 
 
@@ -101,10 +112,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
         $(document).ready(function(){
-            $('.carousel').carousel({
-                interval: 3000,
-                pause:'hover'
-            })
+            $('.carousel').carousel('pause');
         });
     </script>
     <?php $this->load->view('includes/footer'); ?>

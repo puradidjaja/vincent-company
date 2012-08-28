@@ -136,14 +136,22 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
                         <legend>About Company</legend>
                         <button id="wysiwygImage" class="btn"><i class="icon-picture" ></i> Insert Image </button>
                         <textarea name="content" class="mceEditor"><?php echo $profile->about; ?></textarea>
-                        <legend>Company Logo</legend>
+
                         Image URL:<br/>
                         <div class="input-append">
                             <input type="text" name="logo" id="logo_url" class="input-xlarge" value="<?php echo $profile->logo; ?>"/><button class="btn" id="setImage" type="button"><i class="icon-upload-alt"></i></button>
                         </div>
                         <input type="text" name="thumb" id="logo_thumb" value="<?php echo $profile->logo_thumb; ?>" style="display: none;"/>
                         <img src="" alt="" class="thumbnail" id="preview-thumb"/>
+                        <legend>Company Video</legend>
+                        Home Page Vide:<br/>
+                        <select name="home_video">
+                            <?php foreach ($videos as $video): ?>
 
+                                <option value="<?php echo $video->src; ?>"><?php echo $video->name; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                         <div class="form-actions">
                             <?php
                             echo form_button(array('id' => 'submit', 'value' => 'Add', 'name' => 'submit', 'type' => 'submit', 'content' => 'Save', 'class' => 'btn btn-primary'));
