@@ -5,7 +5,7 @@ $assets = array(
         'fancybox/jquery.fancybox.js',
         'fancybox/jquery.fancybox-buttons.js',
         'fancybox/jquery.fancybox-thumbs.js',
-        'tiny_mce/tiny_mce.js', 'wysiwyg.image.tinymce.js','fancybox.setting.js'
+        'tiny_mce/tiny_mce.js', 'wysiwyg.image.tinymce.js', 'fancybox.setting.js'
     ),
     'css' => array(
         'fancybox/jquery.fancybox.css',
@@ -68,7 +68,7 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
 <div class="span12">
     <h1 class="page-title">Profile </h1>
     <div class="row">
-        
+
         <div class="span12">
             <div class="widget">
                 <div class="widget-header">
@@ -80,7 +80,7 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
                     <input id="zoom_level" type="hidden" value="<?php echo $zoom; ?>"/>
                 </div>
                 <div class="widget-content">
-                    <?php echo form_open('admin/profile/'.$profile->id); ?>
+                    <?php echo form_open('admin/profile/' . $profile->id); ?>
                     <div id="form_store"  class="well">
                         <legend>Web Site Information</legend>
                         Company Name: <br>
@@ -122,6 +122,10 @@ if ($profile->addr_x != 0.00000 && $profile->addr_y != 0.00000) {
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-twitter"></i></span><input class="input-xlarge" id="prependedInput" name="twitter" type="text" value="<?php echo $profile->twitter; ?>"/>
+                        </div>
+                       
                         <div class="form-actions">
                             <?php
                             echo form_button(array('id' => 'submit', 'value' => 'Add', 'name' => 'submit', 'type' => 'submit', 'content' => 'Save', 'class' => 'btn btn-primary'));

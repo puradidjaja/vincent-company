@@ -65,22 +65,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#"><?php echo $profile->website_name; ?></a>
+                    <a class="brand" href="#"><img src="<?php echo base_url(); ?>assets/img/bandun_inov_logo.png" style="height: 39px; width: 134px;"/></a></a>
 
                     <div class="nav-collapse collapse pull-right">
                         <ul class="nav">
                             <li <?php if ($this->uri->segment(1) == "") echo ' class="active"'; ?>><a href="<?php echo base_url(); ?>"><i class="icon-home"></i> Home</a></li>
-                            <li <?php if ($this->uri->segment(1) == "about") echo ' class="active"'; ?>><a href="<?php echo base_url('about') ?>"><i class="icon-question-sign"></i> About</a></li>
-                            <li <?php if ($this->uri->segment(1) == "product") echo ' class="active"'; ?>><a href="<?php echo base_url('product') ?>"><i class="icon-screenshot"></i> Product</a></li>
+                            <li <?php if ($this->uri->segment(1) == "about") echo ' class="active"'; ?>><a href="<?php echo base_url('about') ?>"><i class="icon-info-sign"></i> About</a></li>
+                            <li <?php if ($this->uri->segment(1) == "product") echo ' class="active"'; ?>><a href="<?php echo base_url('product') ?>"><i class="icon-tags"></i> Product & Service</a></li>
                             <li <?php if ($this->uri->segment(1) == "contact") echo ' class="active"'; ?>><a href="<?php echo base_url('contact') ?>"><i class="icon-globe"></i> Contact</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> Member <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="<?php echo base_url(); ?>admin">Admin</a></li>
 
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Nav header</li>
-
+                                    
                                 </ul>
                             </li>
                         </ul>

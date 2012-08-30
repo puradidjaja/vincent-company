@@ -42,7 +42,7 @@ class Statistic_model extends MY_Model{
         $today = date('Y-m-d');
         $this->db->select('statistic.section')
                 ->from($this->table_name)
-                ->where(array('DAY(statistic.date_time)'=>date('d'),'statistic.section'=>'home'));
+                ->where(array('DAY(statistic.date_time)'=>date('d')));
         return $this->db->count_all_results();
     }
 

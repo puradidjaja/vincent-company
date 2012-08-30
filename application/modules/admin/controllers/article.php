@@ -143,9 +143,10 @@ class Article extends Admin_Controller {
         $this->view('article/detail', $data);
     }
 
-    public function delete_comment($article_id, $id) {
+    public function delete_comment($id) {
+        $article_id=  $this->comment_model->find_by_id($id)->article_id;
         $this->comment_model->delete($id);
-        redirect('admin/article/detail/' . $article_id);
+        redirect(site_url('admin/article/detail/' . $article_id));
     }
 
     public function delete($id) {

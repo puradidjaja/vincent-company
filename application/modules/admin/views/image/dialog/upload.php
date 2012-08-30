@@ -30,8 +30,8 @@
                                 ?>
                                 <div id="html-upload-ui" class="hide-if-js">
                                     <p id="async-upload-wrap">
-                                        <label class="screen-reader-text" for="async-upload">Upload</label>
-                                        <input type="file" name="userfile" id="async-upload" />
+                                        <label class="screen-reader-text" for="userfile">Upload</label>
+                                        <input type="file" name="userfile" id="userfile" />
                                         <input type="submit" name="html-upload" id="html-upload" class="btn" value="Upload"  />      
                                     </p>
                                     <div class="clear"></div>

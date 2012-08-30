@@ -26,10 +26,11 @@
                         <?php foreach ($comments as $comment): ?>
                             <tr>
                                 <td>
-                                    <h3><?php echo $comment->name; ?> | <i class="icon-remove"></i>
-                                        <a href="<?php site_url('admin/article/delete_comment/'.$article->id.'/'.$comment->id);?>"> delete</a>
+                                    <h3><?php echo $comment->name; ?> | <?php echo $comment->email; ?> | <i class="icon-remove"></i>
+                                        
                                     </h3>
                                     <blockquote><?php echo $comment->content; ?></blockquote>
+                                    <a href="<?php echo site_url('admin/article/delete_comment/' . $comment->id) ?>" title="delete"> delete </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -68,6 +68,10 @@ class User_model extends MY_Model {
 
         return $user_id;
     }
+    
+    public function find_member(){
+        return $this->query_object_list(array('role'=>2));
+    }
 
 }
 

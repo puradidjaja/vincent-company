@@ -1,9 +1,9 @@
 <?php echo form_open('upload/files/edit'); ?>
 <img class="thumbnail" src="
-     <?php echo base_url(); ?>/uploads/thumbs/<?php echo $upload_data['file_name']; ?>" alt="" id="thumb_result">
+     <?php echo base_url(); ?>/uploads/thumbs/<?php echo $upload_data['name']; ?>" alt="" id="thumb_result">
 <div class="caption">
-    <p><strong>File name:</strong> <?php echo $upload_data['orig_name']; ?></p>
-    <p><strong>File type:</strong> <?php echo $upload_data['image_type']; ?></p>
+    <p><strong>File name:</strong> <?php echo $upload_data['name']; ?></p>
+    <p><strong>File type:</strong> <?php echo $upload_data['type']; ?></p>
     <p><strong>Upload date:</strong> <?php echo date('Y-m-d'); ?></p>
 </div>
 <div class="well">
@@ -37,7 +37,7 @@
                     data : data_kirim,
                     type : 'POST',
                     success : function (msg){
-                        window.parent.tinyMCE.execCommand('mceInsertContent',false,'<img src="<?php echo base_url(); ?>uploads/<?php echo $upload_data['file_name'] ?>" class="'+align_m+'" width="'+size_m+'"/>');	
+                        window.parent.tinyMCE.execCommand('mceInsertContent',false,'<img src="<?php echo base_url(); ?>uploads/images/<?php echo $upload_data['name'] ?>" />');	
                         parent.jQuery.fancybox.close();
                            
                     }

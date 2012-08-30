@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <title><?php echo $profile->website_name; ?></title>
+         <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.ico">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
          <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/admin.css">
@@ -80,9 +81,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="<?php echo base_url(); ?>admin/account_setting"><i class="icon-wrench"></i> Account Settings</a></li>
                                 <li><a href="<?php echo base_url(); ?>admin/auth/logout"><i class="icon-signout"></i> Log out</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Nav header</li>
-
+                               
                             </ul>
                         </div>
 

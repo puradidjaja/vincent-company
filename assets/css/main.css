@@ -1,7 +1,7 @@
 body {
     padding-top: 60px;
     font-family: 'Open Sans', arial, sans-serif;
-    background-color: #EFF299;
+    background-color: #ebe569;/*#ebe569;*/
 }
 
 .navbar-inner {
@@ -97,7 +97,7 @@ body {
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
     color: #080808;
     text-decoration: none;
-    background: #EFF299;
+    background: #ebe569;
 
 }
 
@@ -190,7 +190,7 @@ hr {
     border-bottom: 1px solid #DBDAD7;
     border-top: 1px solid #DBDAD7;
     background: url(../img/denim-bg.png) repeat 0 0;
-    color: #EFF299;
+    color: #ebe569;
     display: block;
 }
 
@@ -201,7 +201,7 @@ hr {
 .bottom {
     border-top: 1px solid white;
     margin-top: 0;
-    background-color: #EFF299;
+    background-color: #ebe569;
     color: #999;
     padding: 15px 0;
 }

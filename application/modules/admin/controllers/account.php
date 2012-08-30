@@ -146,9 +146,10 @@ class Account extends Admin_Controller {
     
     public function delete($id){
        $account= $this->account_model->find_by_id($id);
-       $user=  $this->user_model->find_by_id($account->id);
-       $this->account_model->delete($id);
+       $user=  $this->user_model->find_by_id($account->user_id);
        $this->user_model->delete($user->id);
+       $this->account_model->delete($id);
+      
        redirect(site_url('admin/account'));
     }
 

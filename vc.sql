@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 29, 2012 at 01:05 AM
+-- Generation Time: Aug 30, 2012 at 01:58 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `link` varchar(75) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,14 @@ CREATE TABLE IF NOT EXISTS `area` (
   `x` decimal(8,5) NOT NULL,
   `y` decimal(8,5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `area`
+--
+
+INSERT INTO `area` (`id`, `name`, `province`, `x`, `y`) VALUES
+(1, 'DKI', 'Jakarta', -6.21227, 106.84565);
 
 -- --------------------------------------------------------
 
@@ -76,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `tags` varchar(200) NOT NULL,
   `counter` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -94,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `branch` (
   `y` decimal(8,5) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `area_id` (`area_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -111,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `comment_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `article_id` (`article_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -129,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   `date` datetime NOT NULL,
   `thumb_url` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -145,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `portfolio` (
   `client` varchar(100) NOT NULL,
   `function` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -164,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `thumb` varchar(150) NOT NULL,
   `is_gallery` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -187,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `about` text NOT NULL,
   `contact` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `twitter` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -195,8 +203,8 @@ CREATE TABLE IF NOT EXISTS `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id`, `website_name`, `company_name`, `slogan`, `name`, `address`, `logo`, `logo_thumb`, `home_video`, `addr_x`, `addr_y`, `about`, `contact`, `email`) VALUES
-(1, 'Ragajimesin', 'Siliwangi Wirakarya Ganesha', 'So Far So Good', 'DEFAULT', 'Taman Hewan 22, Bandung', '', 'http://localhost/vincent-company/uploads/thumbs/Logo_Resmi_SWG_Crop_30p.jpg', '0', -6.89372, 107.60841, '<p>&nbsp;SWG is one of the best ''We will do it if we can'' Company in the region.</p>\r\n<p style="text-align: justify;">&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>', '022-87283291', 'info@pt-swg.com');
+INSERT INTO `profile` (`id`, `website_name`, `company_name`, `slogan`, `name`, `address`, `logo`, `logo_thumb`, `home_video`, `addr_x`, `addr_y`, `about`, `contact`, `email`, `twitter`) VALUES
+(1, 'sangkuriangindo.com', '', '', 'DEFAULT', 'Pasirkaliki', '', '', '0', -6.88347, 107.57704, '', '022-87283291', 'info@sangkuriangindo.com', '');
 
 -- --------------------------------------------------------
 
@@ -212,14 +220,7 @@ CREATE TABLE IF NOT EXISTS `statistic` (
   `ip` varchar(64) NOT NULL,
   `date_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
-
---
--- Dumping data for table `statistic`
---
-
-INSERT INTO `statistic` (`id`, `section`, `action`, `uri`, `ip`, `date_time`) VALUES
-(60, 'home', 'index', '', '127.0.0.1', '2012-08-29 12:15:27');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
 
 -- --------------------------------------------------------
 
@@ -235,14 +236,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_logged_in` datetime NOT NULL,
   `last_ip` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `role`, `last_logged_in`, `last_ip`) VALUES
-(3, 'gilang_tsatrian@yahoo.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-29 01:00:33', '127.0.0.1');
+(3, 'gilang_tsatrian@yahoo.com', 'd164b39e9ec43f65376629da9ccf41780775f656', 1, '2012-08-30 01:54:20', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -256,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `video` (
   `thumbnail_src` varchar(150) NOT NULL,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables

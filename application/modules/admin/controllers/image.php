@@ -11,12 +11,12 @@
  * @author satriaprayoga
  */
 class Image extends Admin_Controller {
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->model('image_model');
     }
-    
+
     public function index() {
         $uri = $this->uri->segment(4);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
@@ -52,29 +52,35 @@ class Image extends Admin_Controller {
         $this->pagination->initialize($config);
         $this->view('image/index', $data);
     }
-    
-    public function upload_form($is_gallery,$wysiwyg){
-        $data['is_gallery']=$is_gallery;
-        $data['wysiwyg']=$wysiwyg;
-        $this->view('image/dialog/base',$data);
+
+    public function upload_form($is_gallery, $wysiwyg) {
+        $data['is_gallery'] = $is_gallery;
+        $data['wysiwyg'] = $wysiwyg;
+        $this->view('image/dialog/base', $data);
     }
 
     public function upload($wysiwyg) {
-        $result = $this->image_model->upload();
-        $result['wysiwyg']=$wysiwyg;
-        if (isset($result['error'])) {
-            $this->view('image/dialog/upload', $result);
-        } else {
-            $result['success_upload']='image/dialog/upload_success';
-            $this->view('image/dialog/upload', $result);
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('userfile', 'Upload');
+         $result['wysiwyg'] = $wysiwyg;
+        if ($this->form_validation->run() === TRUE) {
+            $result = $this->image_model->upload();
+            $result['wysiwyg'] = $wysiwyg;
+            if (isset($result['error'])) {
+                $this->view('image/dialog/upload', $result);
+            } else {
+                $result['success_upload'] = 'image/dialog/upload_success';
+                $this->view('image/dialog/upload', $result);
+            }
+        }else{
+             $this->view('image/dialog/upload',$result);
         }
     }
-    
-   
-    public function image_gallery($wysiwyg){
-        $data['wysiwyg']=$wysiwyg;
-        $data['images']=$this->image_model->find_all();
-        $this->view('image/dialog/gallery',$data);
+
+    public function image_gallery($wysiwyg) {
+        $data['wysiwyg'] = $wysiwyg;
+        $data['images'] = $this->image_model->find_all();
+        $this->view('image/dialog/gallery', $data);
     }
 
     public function edit() {
@@ -86,25 +92,23 @@ class Image extends Admin_Controller {
                 'caption' => $this->input->post('caption'),
                 'description' => $this->input->post('description'),
             );
-            $id=  $this->input->post('img_id');
-            $this->image_model->update($id,$update);
-            $updated=$this->image_model->find_by_id($id);
-            $arr=array(
-                'image_url'=>  base_url().'uploads/images/'.$updated->file,
-                'thumb_url'=>$updated->thumb_url
+            $id = $this->input->post('img_id');
+            $this->image_model->update($id, $update);
+            $updated = $this->image_model->find_by_id($id);
+            $arr = array(
+                'image_url' => base_url() . 'uploads/images/' . $updated->file,
+                'thumb_url' => $updated->thumb_url
             );
             echo json_encode($arr);
-        }else{
-            $arr=array('error'=>'failed to process upload');
+        } else {
+            $arr = array('error' => 'failed to process upload');
             echo json_encode($arr);
         }
-      
     }
-    
-    public function delete($id){
+
+    public function delete($id) {
         $this->image_model->delete_image($id);
         redirect(site_url('admin/image'));
     }
-    
-    
+
 }

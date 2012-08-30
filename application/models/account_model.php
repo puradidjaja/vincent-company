@@ -18,10 +18,13 @@ class Account_model extends MY_Model {
     }
 
     public function find_by_user_id($id) {
-        $q = $this->db->get_where($this->table_name, array('id' => $id));
+        $q = $this->db->get_where($this->table_name, array('user_id' => $id));
         return $q->row();
     }
     
+    public function find_by_link($link){
+        return $this->query(array('link'=>$link));
+    }
     
 }
 

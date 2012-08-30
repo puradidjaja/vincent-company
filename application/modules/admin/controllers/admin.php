@@ -90,7 +90,8 @@ class Admin extends Admin_Controller {
                 'about' => $this->input->post('content'),
                 'logo' => $this->input->post('logo'),
                 'logo_thumb' => $this->input->post('thumb'),
-                'home_video' => $this->input->post('home_video')
+                'home_video' => $this->input->post('home_video'),
+                'twitter'=>  $this->input->post('twitter')
             );
             $this->profile_model->update($id, $profile_data);
             redirect(site_url('admin/profile/' . $id));

@@ -25,7 +25,7 @@
                                     <img src="<?php echo $p->image_url; ?>" alt="" class="img-rounded"/>
                                     <div class="carousel-caption">
                                         <h1><?php echo $p->name; ?></h1>
-                                        <a href="#" class="btn btn-warning">View More &raquo;</a>
+                                        <a href="<?php echo site_url('product/' . $p->link); ?>" class="btn btn-warning">View More &raquo;</a>
                                     </div>
                                 </div>
 
@@ -53,8 +53,8 @@
                     <table class="table">
                         <?php foreach ($rss as $key => $value) : ?>
                             <tr>
-                                <td><strong><?php echo $value['title']; ?></strong>&mdash;<?php echo $value['summary']; ?>...
-                                    <a href="<?php echo base_url('article/' . $value['link']); ?>">more</a></td>
+                                <td><strong><?php echo $value->title; ?></strong>&mdash;<?php echo $value->summary; ?>...
+                                    <a href="<?php echo base_url('article/' . $value->link); ?>">more</a></td>
                             </tr>
 
                         <?php endforeach; ?>
@@ -79,13 +79,7 @@
 
                 </div>
             <?php else: ?>
-                <div class="span6">
-                    <h2 class="page-heading">
-                        <i class="icon-film"></i>&nbsp;Video
-                    </h2>
-                    <h3>Your video here</h3>
-
-                </div>
+                
             <?php endif; ?>
 
 
@@ -107,8 +101,12 @@
             <div class="span4 pull-right">
                 <h2 class="page-header"><i class="icon-twitter icon-large"></i> Tweets</h2>
                 <?php
+                $tw='ptswg';
+                if(!empty($profile->twitter)){
+                    $tw=$profile->twitter;
+                }
                 echo tweet(array(
-                    'user' => 'ptswg',
+                    'user' => $tw,
                     'shell_bg' => 'none',
                     'shell_color' => '#EFF299',
                     'tweets_bg' => 'none',
@@ -137,9 +135,16 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
-        $('.carousel').carousel({
-            interval: 3000,
-            pause:'hover'
+       
+        $(document).ready(function(){
+            $('.carousel').carousel();
+             $('.carousel').carousel(0);
+            $('.carousel').mouseenter(function() {
+                $(this).carousel('pause');
+            }).mouseleave(function() {
+                $(this).carousel('pause');
+            }); 
+            
         });
     </script>
     <?php $this->load->view('includes/footer'); ?>
